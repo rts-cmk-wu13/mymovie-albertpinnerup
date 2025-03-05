@@ -3,6 +3,9 @@
     display: inline-block;
     width: 38px;
     height: 21px;
+    justify-self: end;
+    grid-row: 1;
+    grid-column: 1;
   }
   
   /* Hide default HTML checkbox */

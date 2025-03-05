@@ -1,6 +1,7 @@
 @import url(darkmode_switch.css);
 @import url(now_showing.css);
 @import url(utility.css);
+@import url(popular.css);
 @import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap');
 
 
@@ -19,6 +20,13 @@ header, main {
     padding: 0 1.5rem;
 }
 
+header {
+    padding: 1.25rem 1.5rem;
+    display: grid;
+}
+
+
+
 p {
 	padding-bottom: 1em;
 }
@@ -32,7 +40,9 @@ img {
 
 .site__title {
     font-size: 1rem;
-    text-align: center;
+    justify-self: center;
+    grid-row: 1;
+    grid-column: 1;
 }
 
 :root {

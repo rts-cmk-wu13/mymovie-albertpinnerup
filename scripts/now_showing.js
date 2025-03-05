@@ -32,7 +32,7 @@ fetch("https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1?appe
                 <img src="${imgUrl}" alt="">
             </div>
             <a href="details.html?id=${id}">${movieTitle}</a>
-            <p><i class="fa-solid fa-star"></i><span>${movie.vote_average}</span></p>
+            <p class="movie__rating"><i class="fa-solid fa-star"></i><span>${movie.vote_average}/10 IMDb</span></p>
                 
             `
 

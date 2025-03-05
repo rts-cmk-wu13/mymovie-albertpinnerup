@@ -1,0 +1,47 @@
+.popular__title {
+    font-size: 1rem;
+    font-weight: bold;
+    padding-bottom: 1rem;
+}
+
+.popular__cards .movie__card {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.movie__info {
+    display: grid;
+    grid-auto-rows: min-content;
+    gap: 0.5rem;
+} 
+
+.movie__title{
+    text-decoration: none;
+    color: black;
+    font-size: 0.875rem;
+    font-weight: bold;
+}
+
+.movie__genres {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+}
+
+.movie__genre {
+    padding: 0 0.75rem;
+    background-color: #DBE3FF;
+    height: 18px;
+    color: #88A4E8;
+    font-size: 0.5rem;
+    border-radius: 100px;
+    align-content: center;
+}
+
+.movie__runtime {
+    font-size: 0.75rem;
+}
+
+
