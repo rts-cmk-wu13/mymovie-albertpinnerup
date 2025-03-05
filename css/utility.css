@@ -1,0 +1,15 @@
+.clickable-card {
+    position: relative;
+}
+
+.clickable-card a::before {
+    content: '';
+    position: absolute;
+    z-index: 100;
+    inset: 0;
+}
+
+.clickable-card:focus-within a:focus {
+    box-shadow: none;
+    outline: none;
+}

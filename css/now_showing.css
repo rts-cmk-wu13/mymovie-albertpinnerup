@@ -1,0 +1,23 @@
+.nowshowing__cards {
+    display: flex;
+    overflow-x: scroll;
+    scrollbar-width: none;
+    gap: 1rem;
+    margin-right: -1.5rem;
+    padding-right: 1.5rem;
+}
+
+.nowshowing__title {
+    font-size: 1rem;
+    font-weight: bolder;
+}
+
+.movie__card {
+    min-width: 143px;
+    display: grid;
+}
+
+.movie__img, .movie__img img {
+    border-radius: 5px;
+}
+

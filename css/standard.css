@@ -1,0 +1,59 @@
+@import url(darkmode_switch.css);
+@import url(now_showing.css);
+@import url(utility.css);
+@import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+
+/* CSS Document */
+* {
+	margin: 0; 
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html {
+    font-family: 'Mulish', Arial, Helvetica, sans-serif;
+}
+
+header, main {
+    padding: 0 1.5rem;
+}
+
+p {
+	padding-bottom: 1em;
+}
+
+/* RWD: */
+img {
+	width: 100%;
+	height: auto;
+	display: block;
+}
+
+.site__title {
+    font-size: 1rem;
+    text-align: center;
+}
+
+:root {
+    color-scheme: light dark;
+    --dark-color: #000;
+    --light-color: #fff;
+}
+
+[data-dark="true"] {
+    color-scheme: dark;
+}
+
+[data-dark="false"] {
+    color-scheme: light;
+}
+
+html, input, textarea {
+   color: light-dark(var(--dark-color), var(--light-color));
+   background-color: light-dark(var(--light-color), var(--dark-color))
+}
+
+input, textarea {
+    border: 1px solid light-dark(var(--dark-color), var(--light-color));
+}
