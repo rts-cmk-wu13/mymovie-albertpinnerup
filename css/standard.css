@@ -1,6 +1,7 @@
 @import url(darkmode_switch.css);
-@import url(now_showing.css);
 @import url(utility.css);
+@import url(footer.css);
+@import url(now_showing.css);
 @import url(popular.css);
 @import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap');
 
@@ -14,6 +15,12 @@
 
 html {
     font-family: 'Mulish', Arial, Helvetica, sans-serif;
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+}
+
+html::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
 }
 
 header, main {

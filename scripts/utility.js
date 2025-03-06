@@ -12,3 +12,34 @@ function timeConvert(n) {
     // Construct and return a string representing the conversion result
     return rhours + "h " + rminutes + "m";
   }
+
+
+
+
+let options = {
+  threshold: 1.0,
+}
+
+let currentPage = 1
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+      if (entry.isIntersecting) {
+          currentPage++
+          fetchNowShowing(currentPage)
+          fetchMovies(currentPage)
+      }
+  })
+}, options)
+
+const imageObserver = new IntersectionObserver(entries => {
+
+  entries.forEach(entry => {
+      if (entry.isIntersecting) {
+          entry.target.src = entry.target.dataset.imagesrc
+
+          imageObserver.unobserve(entry.target)
+      }
+  })
+})
+

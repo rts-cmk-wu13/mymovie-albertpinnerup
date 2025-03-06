@@ -1,0 +1,15 @@
+footer {
+    height: 60px;
+    width: 100%;
+    background-color: light-dark(var(--light-color), var(--dark-color));
+    position: fixed;
+    bottom: 0;
+    margin-bottom: 34px;
+    box-shadow: 0 34px 0 0 light-dark(var(--light-color), var(--dark-color));
+    padding: 1.125rem 3.125rem;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+}
