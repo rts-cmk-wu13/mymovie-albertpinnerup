@@ -22,12 +22,25 @@ let options = {
 
 let currentPage = 1
 
-const observer = new IntersectionObserver(entries => {
+const PopularObserver = new IntersectionObserver(entries => {
   entries.forEach(entry => {
       if (entry.isIntersecting) {
+
+        console.log(entry);
+        
+          currentPage++
+          fetchMovies(currentPage)
+      }
+  })
+}, options)
+
+const nowObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+      if (entry.isIntersecting) {
+
+        
           currentPage++
           fetchNowShowing(currentPage)
-          fetchMovies(currentPage)
       }
   })
 }, options)

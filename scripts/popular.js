@@ -21,7 +21,7 @@ fetch("data/genres.json")
 
 function fetchMovies(page) {
 
-    fetch(`https://api.themoviedb.org/3/movie/popular?language=en-US&page=${page}?append_to_response=credits`, {
+    fetch(`https://api.themoviedb.org/3/movie/popular?language=en-US&page=${page}`, {
         headers: {
             accept: 'application/json',
             Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1YzA0YTkyYzIwMGNmY2YwOWY3NmY5ODJhZjZjYThmNCIsIm5iZiI6MTc0MDk4NjkzMy43MDUsInN1YiI6IjY3YzU1YTM1NmNhOTAzNWE2YTdhNmQ5MCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.XM27U_P6T9V1xVp1NnX-uIYw9gSZtd9JcuqtFNas79w'
@@ -31,6 +31,7 @@ function fetchMovies(page) {
         .then(data => {
 
             console.log(data);
+            
 
 
             let popularCards = document.createElement("div")
@@ -53,7 +54,7 @@ function fetchMovies(page) {
                     .join("");
 
 
-                cards.innerHTML = `
+                cards.innerHTML += `
                         <a href="details.html?id=${id}" class="movie__img">
                             <img src="img/placeholder.svg" data-imagesrc="${imgUrl}" alt="">
                         </a>
@@ -70,7 +71,7 @@ function fetchMovies(page) {
 
             Promise.all(moviePromises).then(() => {
                 let observedCard = popularCards.querySelector(".movie__card:nth-last-child(5)")
-                observer.observe(observedCard)
+                PopularObserver.observe(observedCard)
 
                 let observedImgs = popularCards.querySelectorAll(".popular__cards .movie__img img")
 

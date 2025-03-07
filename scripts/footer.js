@@ -9,16 +9,16 @@ function initialseFooter() {
 
     if(darkMode == false) {
         footerSection.innerHTML = `
-        <a href="index.html"><img src="img/reel.svg" alt=""></a>
-        <a href="#"><img src="img/ticket.svg" alt=""></a>
-        <a href="#"><img src="img/bookmark.svg" alt=""></a>
+        <a href="index.html"><img src="img/reel_light.svg" alt=""></a>
+        <a href="#"><img src="img/ticket_light.svg" alt=""></a>
+        <a href="#"><img src="img/bookmark_light.svg" alt=""></a>
     `
         document.querySelector("footer").append(footerSection)
     } else {
         footerSection.innerHTML = `
-        <a href="index.html">hej</a>
-        <p>med</p>
-        <p>dig</p>
+        <a href="index.html"><img src="img/reel_dark.svg" alt=""></a>
+        <a href="#"><img src="img/ticket_dark.svg" alt=""></a>
+        <a href="#"><img src="img/bookmark_dark.svg" alt=""></a>
     `
         document.querySelector("footer").append(footerSection)
     }
@@ -33,9 +33,9 @@ switchElm.addEventListener("change", () => {
         rootElm.setAttribute("data-dark", switchElm.checked)
         saveTolocalStorage("isDarkMode", switchElm.checked)
         footerSection.innerHTML = `
-        <a href="index.html">hej</a>
-        <p>med</p>
-        <p>dig</p>
+        <a href="index.html"><img src="img/reel_dark.svg" alt=""></a>
+        <a href="#"><img src="img/ticket_dark.svg" alt=""></a>
+        <a href="#"><img src="img/bookmark_dark.svg" alt=""></a>
     `
         document.querySelector("footer").append(footerSection)
     } else {
@@ -43,9 +43,9 @@ switchElm.addEventListener("change", () => {
         rootElm.setAttribute("data-dark", switchElm.checked)
 
         footerSection.innerHTML = `
-        <a href="index.html"><img src="img/reel.svg" alt=""></a>
-        <p>med</p>
-        <p>dig</p>
+        <a href="index.html"><img src="img/reel_light.svg" alt=""></a>
+        <a href="#"><img src="img/ticket_light.svg" alt=""></a>
+        <a href="#"><img src="img/bookmark_light.svg" alt=""></a>
     `
         document.querySelector("footer").append(footerSection)
     }
