@@ -11,7 +11,4 @@ divElm.innerHTML = `
     <main>
 
     </main>
-    <footer>
-
-    </footer>
 `
