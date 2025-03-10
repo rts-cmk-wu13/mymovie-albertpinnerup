@@ -10,11 +10,8 @@ function timeConvert(n) {
     // Round the remaining minutes to the nearest whole number
     let rminutes = Math.round(minutes);
     // Construct and return a string representing the conversion result
-    return rhours + "h " + rminutes + "m";
+    return rhours + "h " + rminutes + "min";
   }
-
-
-
 
 let options = {
   threshold: 1.0,

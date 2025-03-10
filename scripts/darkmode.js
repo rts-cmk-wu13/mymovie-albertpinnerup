@@ -1,3 +1,6 @@
+console.log("script Loaded");
+
+
 let rootElm = document.documentElement;
 let switchElm = document.querySelector("#switch");
 let isDarkMode = readFromLocalStorage("isDarkMode")
@@ -19,13 +22,15 @@ if (darkState) {
     rootElm.setAttribute("data-dark", switchElm.checked)
 }
 
-console.log(switchElm);
+console.log(document.querySelector("#switch"));
+
 
 
 
 
 switchElm.addEventListener("change", () => {
     console.log(switchElm.checked);
+    
     if (switchElm.checked) {
         rootElm.setAttribute("data-dark", switchElm.checked)
         saveTolocalStorage("isDarkMode", switchElm.checked)
@@ -34,5 +39,4 @@ switchElm.addEventListener("change", () => {
         rootElm.setAttribute("data-dark", switchElm.checked)
     } 
 })
-console.log(rootElm);
 

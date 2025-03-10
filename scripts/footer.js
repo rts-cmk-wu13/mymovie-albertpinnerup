@@ -28,7 +28,6 @@ initialseFooter()
 
 
 switchElm.addEventListener("change", () => {
-    console.log(switchElm.checked);
     if (switchElm.checked) {
         rootElm.setAttribute("data-dark", switchElm.checked)
         saveTolocalStorage("isDarkMode", switchElm.checked)

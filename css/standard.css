@@ -3,6 +3,7 @@
 @import url(footer.css);
 @import url(now_showing.css);
 @import url(popular.css);
+@import url(details.css);
 @import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap');
 
 
@@ -30,6 +31,9 @@ header, main {
 header {
     padding: 1.25rem 1.5rem;
     display: grid;
+    margin-block-start: 2.75rem;
+    margin-block-end: 1rem;
+    position: relative;
 }
 
 
