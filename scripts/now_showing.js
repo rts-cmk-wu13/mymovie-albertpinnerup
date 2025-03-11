@@ -82,3 +82,4 @@ function fetchNowShowing(page) {
 }
 
 fetchNowShowing(currentPage)
+

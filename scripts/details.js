@@ -34,51 +34,57 @@ function fetchDetails(movieId) {
             Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1YzA0YTkyYzIwMGNmY2YwOWY3NmY5ODJhZjZjYThmNCIsIm5iZiI6MTc0MDk4NjkzMy43MDUsInN1YiI6IjY3YzU1YTM1NmNhOTAzNWE2YTdhNmQ5MCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.XM27U_P6T9V1xVp1NnX-uIYw9gSZtd9JcuqtFNas79w'
         }
     })
-    .then(response => response.json())
-    .then(data => {
-        console.log(data);
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
 
-        // HEADER
+            // HEADER
 
-        let imgUrl = `https://image.tmdb.org/t/p/w500${data.backdrop_path}`;
-        let imgDiv = document.createElement("div");
-        imgDiv.className = "details__img";
+            let imgUrl = `https://image.tmdb.org/t/p/w500${data.backdrop_path}`;
+            let imgDiv = document.createElement("div");
+            imgDiv.className = "details__img";
 
-        let img = document.createElement("img");
-        img.src = imgUrl;
-        img.alt = data.title;
+            let img = document.createElement("img");
+            img.src = imgUrl;
 
-        imgDiv.appendChild(img);
-        detailsHeader.appendChild(imgDiv);
+            imgDiv.appendChild(img);
+            detailsHeader.appendChild(imgDiv);
 
-        // HEADER END
+            // HEADER END
 
 
-        // DETAILS
+            // DETAILS
 
-        let genreNames = data.genres.map(genre => {
-            return genre ? `<span class="movie__genre">${genre.name}</span>` : '';
-        }).join('');
+            let genreNames = data.genres.map(genre => {
 
-        function findRating(countryCode) {
-            const country = data.release_dates.results.find(country => country.iso_3166_1 === countryCode);
-    
-            let rating = 'N/A'
-        
-            if (country) {
-                country.release_dates.forEach(release => {
-                    if (release.certification) {
-                        rating = release.certification;
-                    }
-                });
+                if (genre) {
+                    return `<span class="movie__genre">${genre.name}</span>`;
+                } else {
+                    return ''
+                };
+
+            }).join('');
+
+
+            function findRating(countryCode) {
+                const country = data.release_dates.results.find(country => country.iso_3166_1 === countryCode);
+
+                let rating = 'N/A'
+
+                if (country) {
+                    country.release_dates.forEach(release => {
+                        if (release.certification) {
+                            rating = release.certification;
+                        };
+                    });
+                };
+
+                return rating;
             };
-        
-            return rating;
-        };
 
-        ratingCache = findRating('US')
+            ratingCache = findRating('US')
 
-        detailsElm.innerHTML = `
+            detailsElm.innerHTML = `
             <h1 class="details__title">${data.title}</h1>
             <div class="movie__info">
                 <p class="movie__rating"><i class="fa-solid fa-star"></i><span>${data.vote_average}/10 IMDb</span></p>
@@ -91,57 +97,71 @@ function fetchDetails(movieId) {
             </div>
         `;
 
-        // DETAILS END
+            // DETAILS END
 
-        
-        // DESCRIPTION
 
-        overviewElm.innerHTML = ` 
+            // DESCRIPTION
+
+            overviewElm.innerHTML = ` 
             <h2>Description</h2>
             <p>${data.overview}</p>
         `
 
-        // DESRIPTION END
+            // DESRIPTION END
 
 
-        // CAST
+            // CAST
 
-        castElm.innerHTML = `
-        <h2>Cast</h2>
-    `
+            function castSection() {
 
-        let castCards = document.createElement("div")
-        castCards.className = "cast__cards"
+                if (data.credits.cast && data.credits.cast.length > 0) {
+                    castElm.innerHTML = `
+                    <h2>Cast</h2>
+                `;
+
+                    let castCards = document.createElement("div");
+                    castCards.className = "cast__cards";
 
 
+                    data.credits.cast.map(actor => {
 
-        data.credits.cast.map(actor => {
-            let castCard = document.createElement("div");
-            castCard.className = "details__cast-card"
+                        let cardContent = ''
 
-            let actorUrl = `https://image.tmdb.org/t/p/w500${actor.profile_path}`;
+                        if (actor.profile_path && actor.profile_path.trim() !== "") {
+                            let castCard = document.createElement("div");
+                            castCard.className = "details__cast-card"
+                            let actorUrl = `https://image.tmdb.org/t/p/w500${actor.profile_path}`;
 
-            castCard.innerHTML = `
-                <div class="cast__img">
-                    <img src="${actorUrl}" alt="">
-                </div>
-                <p>${actor.name}</p>
-            `
+                            cardContent += `
+                            <div class="cast__img">
+                                <img src="${actorUrl}" alt="">
+                            </div>
+                            <p>${actor.name}</p>
+                            
+                        `
 
-            castCards.append(castCard)
-            
-        }).join('')
+                            castCard.innerHTML = cardContent
+                            castCards.append(castCard)
+                        }
+                    }).join('');
 
-        castElm.appendChild(castCards)
-       
-        
-    });
+
+                    castElm.appendChild(castCards);
+
+
+                };
+            };
+
+            castSection();
+
+            // CAST END
+
+        });
 };
 
 
 
-// Calling the function to fetch movie details and display them
 fetchDetails(detailsId);
 
-// Ensure dark mode is reapplied after content is loaded
-rootElm.setAttribute("data-dark", switchElm.checked);
+
+

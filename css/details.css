@@ -63,6 +63,23 @@
     scrollbar-width: none;
     grid-auto-flow: column;
     gap: .75rem;
+    animation: scrollHint 1.5s ease-in-out forwards;
+    animation-delay: .5s;
+}
+
+@keyframes scrollHint {
+    0% {
+        transform: translateX(0);
+    }
+    30% {
+        transform: translateX(-20px);
+    }
+    60% {
+        transform: translateX(10px);
+    }
+    100% {
+        transform: translateX(0);
+    }
 }
 
 .cast__cards::-webkit-scrollbar {
@@ -116,3 +133,16 @@
     display: grid;
     grid-template-rows: auto 1fr; /* Header takes auto space, main fills rest */
 }
+
+.details__header-utility {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    z-index: 100;
+}
+
+.details__header-utility a{
+   color: #fff;
+   font-size: 1.5rem;
+}
+
