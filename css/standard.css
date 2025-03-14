@@ -1,0 +1,80 @@
+@import url(darkmode_switch.css);
+@import url(utility.css);
+@import url(footer.css);
+@import url(now_showing.css);
+@import url(popular.css);
+@import url(details.css);
+@import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+
+/* CSS Document */
+* {
+	margin: 0; 
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html {
+    font-family: 'Mulish', Arial, Helvetica, sans-serif;
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+}
+
+html::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
+}
+
+header, main {
+    padding: 0 1.5rem;
+}
+
+header {
+    padding: 1.25rem 1.5rem;
+    display: grid;
+    margin-block-start: 2.75rem;
+    margin-block-end: 1rem;
+    position: relative;
+}
+
+
+
+p {
+	padding-bottom: 1em;
+}
+
+/* RWD: */
+img {
+	width: 100%;
+	height: auto;
+	display: block;
+}
+
+.site__title {
+    font-size: 1rem;
+    justify-self: center;
+    grid-row: 1;
+    grid-column: 1;
+}
+
+:root {
+    color-scheme: light dark;
+    --dark-color: #000;
+    --light-color: #fff;
+}
+
+[data-dark="true"] {
+    color-scheme: dark;
+}
+
+[data-dark="false"] {
+    color-scheme: light;
+}
+
+html, input, textarea {
+   color: light-dark(var(--dark-color), var(--light-color));
+   background-color: light-dark(var(--light-color), var(--dark-color))
+}
+
+input, textarea {
+    border: 1px solid light-dark(var(--dark-color), var(--light-color));
+}
