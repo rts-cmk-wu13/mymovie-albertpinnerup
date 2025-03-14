@@ -39,7 +39,8 @@ function fetchNowShowing(page) {
                 let cards = document.createElement("div")
                 cards.classList.add("movie__card", "clickable-card")
 
-                let imgUrl = `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+                let imgUrl = movie.poster_path ? `https://image.tmdb.org/t/p/w500${movie.poster_path}` : 'img/placeholder.svg';
+
                 let movieTitle = movie.title
                 let id = movie.id
 
@@ -55,21 +56,21 @@ function fetchNowShowing(page) {
                 nowShowingCards.append(cards)
             });
 
-            Promise.all(nowShowingPromises).then(() => {
 
-                let observedCard = nowShowingCards.querySelector(".movie__card:nth-last-child(5)")
-                nowObserver.observe(observedCard)
 
-                let observedImgs = nowShowingCards.querySelectorAll(".nowshowing__cards .movie__img img")
+            let observedCard = nowShowingCards.querySelector(".movie__card:nth-last-child(5)")
+            nowObserver.observe(observedCard)
 
-                if (observedImgs) {
-                    observedImgs.forEach(img => {
-                        imageObserver.observe(img)
-                    })
-                }
+            let observedImgs = nowShowingCards.querySelectorAll(".nowshowing__cards .movie__img img")
 
-                sectionElm.append(nowShowingCards)
-            });
+            if (observedImgs) {
+                observedImgs.forEach(img => {
+                    imageObserver.observe(img)
+                })
+            }
+
+            sectionElm.append(nowShowingCards)
+
 
 
         })

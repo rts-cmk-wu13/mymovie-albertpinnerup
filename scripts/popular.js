@@ -69,7 +69,7 @@ function fetchMovies(page) {
 
             })
 
-            Promise.all(moviePromises).then(() => {
+            
                 let observedCard = popularCards.querySelector(".movie__card:nth-last-child(5)")
                 PopularObserver.observe(observedCard)
 
@@ -82,7 +82,7 @@ function fetchMovies(page) {
                 }
 
                 popularSectionElm.append(popularCards)
-            });
+           
         });
 
     document.querySelector("main").append(popularSectionElm)
